@@ -48,7 +48,7 @@ app.get('/badmsg2', (_req, res) => {
 });
 
 const port = process.env.PORT ? Number(process.env.PORT) : 3000;
-const bad: number = 'oops';
+const bad: number = 42;
 console.log(bad);
 app.listen(port, () => {
   process.stdout.write(`server listening on http://localhost:${port}\n`);
