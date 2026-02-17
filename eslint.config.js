@@ -1,16 +1,19 @@
-import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
+import prettier from 'eslint-config-prettier';
 
 export default tseslint.config(
-  js.configs.recommended,
-  ...tseslint.configs.recommended,
   {
-    ignores: ['dist', 'node_modules'],
+    ignores: ['dist', 'node_modules', 'eslint.config.js', '.husky/*'],
   },
+  ...tseslint.configs.recommendedTypeChecked,
   {
-    files: ['**/*.ts'],
-    rules: {
-      // Customize rules as needed; keep strict defaults reasonable
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.json'],
+      },
     },
-  }
+    files: ['**/*.ts'],
+    rules: {},
+  },
+  prettier,
 );
