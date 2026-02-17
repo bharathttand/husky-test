@@ -50,7 +50,7 @@ app.get('/badmsg2', (_req, res) => {
 });
 
 // Route that uses a value with a type error to test pre-push
-const willFail: number = 'oops';
+const willFail: number = 0;
 app.get('/type-error', (_req, res) => {
   res.json({ value: willFail });
 });
