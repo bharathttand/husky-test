@@ -5,7 +5,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const users = [
+type User = { id: number; name: string };
+const users: User[] = [
   { id: 1, name: 'Alice' },
   { id: 2, name: 'Bob' },
   { id: 3, name: 'Charlie' },
@@ -46,6 +47,12 @@ app.get('/badmsg', (_req, res) => {
 
 app.get('/badmsg2', (_req, res) => {
   res.json({ ok: true });
+});
+
+// Route that uses a value with a type error to test pre-push
+const willFail: number = 'oops';
+app.get('/type-error', (_req, res) => {
+  res.json({ value: willFail });
 });
 
 const port = process.env.PORT ? Number(process.env.PORT) : 3000;
