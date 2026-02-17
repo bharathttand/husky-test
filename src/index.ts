@@ -43,6 +43,10 @@ app.get('/badmsg', (_req, res) => {
   res.json({ ok: true });
 });
 
+app.get('/badmsg2', (_req, res) => {
+  res.json({ ok: true });
+});
+
 const port = process.env.PORT ? Number(process.env.PORT) : 3000;
 app.listen(port, () => {
   process.stdout.write(`server listening on http://localhost:${port}\n`);
